@@ -1,0 +1,402 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.6rem 0.8rem;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App h1 {
+  margin: 0.4rem 0 0.1rem 0;
+  font-size: 2.4rem;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.App p {
+  margin: 0.15rem 0;
+  font-size: 1rem;
+  color: #5a6c7d;
+}
+
+/* Tighten controls row spacing */
+.controls-row {
+  margin-top: 6px;
+  gap: 6px;
+}
+
+@media (min-width: 768px) {
+  .App {
+    padding: 2rem;
+    max-width: 100%;
+  }
+
+  .App h1 {
+    font-size: 3rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+
+  .App p {
+    font-size: 1.2rem;
+    margin: 0.75rem 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .App {
+    padding: 3rem;
+    max-width: 100%;
+  }
+
+  .App h1 {
+    font-size: 3.5rem;
+    margin: 2rem 0 1rem 0;
+  }
+}
+
+.card {
+  width: 90%;
+  max-width: 500px;
+  height: 420px; /* increased fixed height to make the card taller */
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  background-color: white;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keep content spaced so controls stay at the bottom */
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: auto; /* allow internal scrolling if content is long */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Ensure the main content area can scroll if it's too tall for the fixed card */
+.card .content {
+  overflow: auto;
+  max-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 80%;
+    max-width: 700px;
+    height: 480px;
+    margin: 2rem auto;
+    padding: 2rem;
+  }
+
+  .card h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: 70%;
+    max-width: 800px;
+    height: 560px;
+    margin: 2.5rem auto;
+    padding: 2.5rem;
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .card {
+    width: 60%;
+    max-width: 900px;
+    height: 640px;
+    margin: 3rem auto;
+    padding: 3rem;
+  }
+
+  .card h3 {
+    font-size: 1.6rem;
+  }
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  max-height: 36%; /* allow images to be larger in taller cards */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .card img {
+    max-height: 220px;
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card img {
+    max-height: 260px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.card.concept {
+  border-left: 6px solid #29b6f6;
+}
+
+.card.algorithm {
+  border-left: 6px solid #ffa726;
+}
+
+.card.react {
+  border-left: 6px solid #61dafb;
+}
+
+.card.tool {
+  border-left: 6px solid #ef5350;
+}
+
+/* Guess input and submit button inside the card */
+.guess-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.guess-form input[type="text"] {
+  flex: 1 1 auto;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.guess-form button {
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+/* Feedback visuals applied to the whole card */
+.feedback-correct {
+  box-shadow: 0 10px 30px rgba(39, 174, 96, 0.18);
+  border-color: rgba(39, 174, 96, 0.6);
+}
+
+.feedback-incorrect {
+  box-shadow: 0 10px 30px rgba(231, 76, 60, 0.12);
+  border-color: rgba(231, 76, 60, 0.5);
+}
+
+.feedback-message {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.feedback-message--correct {
+  background-color: rgba(39, 174, 96, 0.12);
+  color: #27ae60;
+}
+
+.feedback-message--incorrect {
+  background-color: rgba(231, 76, 60, 0.08);
+  color: #e74c3c;
+}
+
+.flip-button {
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.flip-button:hover {
+  transform: none;
+  border-color: rgba(0,0,0,0.12);
+}
+
+.card-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background-color: #fafafa;
+  cursor: pointer;
+}
+
+.nav-button:disabled,
+.nav-button[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: default;
+  filter: grayscale(30%);
+}
+
+.master-button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: #16a34a;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.master-button:hover {
+  background-color: #138043;
+}
+
+.mastered-badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: 60vw;
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+.mastered-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  color: #10b981;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.mastered-text {
+  max-width: 24ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mastered-unmark {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.mastered-unmark:hover {
+  color: #dc2626;
+}
+
+@media (min-width: 768px) {
+
+  .card.concept,
+  .card.algorithm,
+  .card.react,
+  .card.tool {
+    border-left-width: 8px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .card.concept,
+  .card.algorithm,
+  .card.react,
+  .card.tool {
+    border-left-width: 10px;
+  }
+}

@@ -1,6 +1,5 @@
 # Web Development Project 3 - *Computer Science Trivia*
 
-Submitted by: **dganesh05**
 
 This web app is a small, responsive flashcard-style trivia application that tests basic computer science concepts. Users can read a question, type a guess before flipping the card, and receive immediate feedback. The app includes navigation, shuffle, streak tracking, and a way to mark cards as "mastered" so they are removed from the active study pool.
 
